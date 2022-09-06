@@ -1,0 +1,83 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %} Servicios Activos {% endblock title %}
+{% block header_title %} Mis servicios -> Servicios Activos {% endblock header_title %}
+
+{% block content %}
+    <div class="row column1">
+        <div class="col-md-12">
+            <div class="white_shd full margin_bottom_30">
+                <div class="full graph_head">
+                    <div class="heading1 margin_0">
+                        <h2>Listado</h2>
+                    </div>
+                </div>
+                <div class="full price_table padding_infor_info">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="table-responsive-sm">
+                                <table class="table table-striped projects">
+                                    <thead class="thead-dark">
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Servicio</th>
+                                        <th>Inicio</th>
+                                        <th>Termino</th>
+                                        <th>Precio</th>
+                                        <th>Progreso del Proyecto</th>
+                                        <th> </th>
+                                    </tr>
+                                    </thead>
+  
+                                    {% for servicio_activo in servicios_activos %}                                     
+                                        <tbody>                                        
+                                            <tr>      
+                                                <td>
+                                                    <a>{{ forloop.counter }}</a>
+                                                </td>                                                                                 
+                                                <td>
+                                                    <a>{{ servicio_activo.servicio }}</a>
+                                                </td>
+                                                <td>
+                                                    <a>{{ servicio_activo.inicio }}</a>
+                                                </td>
+                                                <td>
+                                                    <a>{{ servicio_activo.final }}</a>
+                                                </td>
+                                                <td>
+                                                    <a>{{ servicio_activo.precio }}</a>
+                                                </td>
+                                                
+                                                <td class="project_progress">
+                                                        <div class="progress progress_sm">
+                                                            <div class="progress-bar progress-bar-animated progress-bar-striped" 
+                                                                role="progressbar" 
+                                                                aria-valuenow="10" 
+                                                                aria-valuemin="0" 
+                                                                aria-valuemax="100" 
+                                                                style="width: {{ servicio_activo.progreso }}%;"></div>
+                                                        </div>
+                                                        <small>Activado y Operativo</small>
+                                                    </td>
+                                                <td>
+                                                    <a class="model_bt btn btn-info btn btn-xs" href="{% url 'detalles' servicio_activo.slug %}">Detalles</a> 
+                                                    <!--<a href="{% url 'detalles' servicio_activo.slug %}"></a><button type="button" class="btn btn-info btn">Detalles</button></a>-->
+                                                </td>                                         
+                                                
+                                            
+                                            </tr>                                       
+                                                                                        
+                                        </tbody>
+                                      {% endfor %}
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                <div class="py-3" >
+                    <a href="{% url 'add_servicio' %}"><button type="button" class="btn btn-info btn">A&ntilde;adir un Servicio Adicional</button></a>
+                </div>                                  
+            </div>
+        </div>
+    </div>
+
+{% endblock content %} 

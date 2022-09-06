@@ -1,0 +1,244 @@
+{% extends 'index.html' %}
+{% load i18n %}
+
+{% load static %}
+{% block title %} Resumen {% endblock %}
+{% block header_title %} Resumen {% endblock header_title %}
+{% block content %} 
+    <!-- dashboard inner -->
+
+    <div class="midde_cont">
+        <div class="container-fluid">
+            {% comment %} <div class="row column_title">
+                <div class="col-md-12">
+                <div class="page_title">
+                    <h2>Servicios Activos</h2>
+                </div>
+                </div>
+            </div> {% endcomment %}
+           
+            <div class="row column1">
+                <div class="col-md-6 col-lg-3">
+                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#website">
+                <div class="full counter_section margin_bottom_30">
+                    <div class="couter_icon">
+                        <div> 
+                            <i class="fa fa-code yellow_color"></i>
+                        </div>
+                    </div>
+                    <div class="counter_no">
+                        <div>
+                            {% if web_cantidades == 0 %}
+                                <p class="total_no">0</p>
+                            {% else %}
+                                <p class="total_no">{{ web_cantidades }}</p>                                
+                            {% endif %}                               
+                            
+                            <p class="head_couter">Dise&ntilde;o de WebSite</p>
+                        </div>
+                    </div>
+                </div>
+                </button>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#hosting">
+                <div class="full counter_section margin_bottom_30">
+                    <div class="couter_icon">
+                        <div> 
+                            <i class="fa fa-cloud blue1_color"></i>
+                        </div>
+                    </div>
+                    <div class="counter_no">
+                        <div>
+                            {% if hosting_cantidades == 0 %}
+                                <p class="total_no">0</p>
+                            {% else %}
+                                <p class="total_no">{{ hosting_cantidades }}</p>                                
+                            {% endif %}
+                            
+                            <p class="head_couter">Servidor Hosting</p>
+                        </div>
+                    </div>
+                </div>
+                </button>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#inscripcion">
+                <div class="full counter_section margin_bottom_30">
+                    <div class="couter_icon">
+                        <div> 
+                            <i class="fa fa-at green_color"></i>
+                        </div>
+                    </div>
+                    <div class="counter_no">
+                        <div>
+                            {% if inscripcion_cantidades == 0 %}
+                                <p class="total_no">0</p>
+                            {% else %}
+                                <p class="total_no">{{ inscripcion_cantidades }}</p>                                
+                            {% endif %}
+                            <p class="head_couter">Nombre de Dominios</p>
+                        </div>
+                    </div>
+                </div>
+                </button>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#marketing">
+                <div class="full counter_section margin_bottom_30">
+                    <div class="couter_icon">
+                        <div> 
+                            <i class="fa fa-bar-chart-o red_color"></i>
+                        </div>
+                    </div>
+                    <div class="counter_no">
+                        <div>
+                            {% if marketing_cantidades == 0 %}
+                                <p class="total_no">0</p>
+                            {% else %}
+                                <p class="total_no">{{ marketing_cantidades }}</p>                                
+                            {% endif %}
+                            <p class="head_couter">Marketing digital</p>
+                        </div>
+                    </div>
+                </div>
+                </button>
+                </div>
+            </div>
+            
+            {% comment %} <div class="row column3">
+                <!-- testimonial -->
+                <div class="col-md-6">
+                <div class="dark_bg full margin_bottom_30">
+                    <div class="full graph_head">
+                        <div class="heading1 margin_0">
+                            <h2>Noticias</h2>
+                        </div>
+                    </div>
+                    <div class="full graph_revenue">
+                        <div class="row">
+                            <div class="col-md-12">
+                            <div class="content testimonial">
+                                <div id="testimonial_slider" class="carousel slide" data-ride="carousel">
+                                    <!-- Wrapper for carousel items -->
+                                    <div class="carousel-inner">
+                                        <div class="item carousel-item active">
+                                        <div class="img-box"><img src="{% static 'images/layout_img/user_img.jpg' %}" alt=""></div>
+                                        <p class="testimonial">Bienvenido estimado cliente, este es su panel de control desde el cual podra administrar todos los servicios que tenga activos, esperamos tenga una grata experiencia</p>
+                                        <p class="overview"><b>Leonardo Flores</b>Gerente WebsOnline</p>
+                                        </div>
+                                        <div class="item carousel-item">
+                                        <div class="img-box"><img src="{% static 'images/layout_img/user_img.jpg' %}" alt=""></div>
+                                        <p class="testimonial">Edite sus Datos Personales desde la seccion 'Mis Datos' o a traves del siguiente boton, esto es importante pues nos permite brindarle una atención mas personalizada</p>
+                                        <p class="overview"><b>Soporte Tecnico</b>WebsOnline</p>
+                                        </div>
+                                        <div class="item carousel-item">
+                                        <div class="img-box"><img src="{% static 'images/layout_img/user_img.jpg' %}" alt=""></div>
+                                        <p class="testimonial">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae, totam rem aperiam.</p>
+                                        <p class="overview"><b>Michael Stuart</b>Seo Founder</p>
+                                        </div>
+                                    </div>
+                                    <!-- Carousel controls -->
+                                    <a class="carousel-control left carousel-control-prev" href="#testimonial_slider" data-slide="prev">
+                                    <i class="fa fa-angle-left"></i>
+                                    </a>
+                                    <a class="carousel-control right carousel-control-next" href="#testimonial_slider" data-slide="next">
+                                    <i class="fa fa-angle-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <!-- end testimonial -->
+                <!-- progress bar -->
+                <div class="col-md-6">
+                <div class="white_shd full margin_bottom_30">
+                    <div class="full graph_head">
+                        <div class="heading1 margin_0">
+                            <h2>Nuestros Servicios</h2>
+                        </div>
+                    </div>
+                    <div class="full progress_bar_inner">
+                        <div class="row">
+                            <div class="col-md-12">
+                            <div class="progress_bar">
+                                <!-- Skill Bars -->
+                                <span class="skill" style="width:73%;">Facebook <span class="info_valume">73%</span></span>                  
+                                <div class="progress skill-bar ">
+                                    <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100" style="width: 73%;">
+                                    </div>
+                                </div>
+                                <span class="skill" style="width:62%;">Twitter <span class="info_valume">62%</span></span>   
+                                <div class="progress skill-bar">
+                                    <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100" style="width: 62%;">
+                                    </div>
+                                </div>
+                                <span class="skill" style="width:54%;">Instagram <span class="info_valume">54%</span></span>
+                                <div class="progress skill-bar">
+                                    <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" aria-valuenow="54" aria-valuemin="0" aria-valuemax="100" style="width: 54%;">
+                                    </div>
+                                </div>
+                                <span class="skill" style="width:82%;">Google plus <span class="info_valume">82%</span></span>
+                                <div class="progress skill-bar">
+                                    <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100" style="width: 82%;">
+                                    </div>
+                                </div>
+                                <span class="skill" style="width:48%;">Otros <span class="info_valume">48%</span></span>
+                                <div class="progress skill-bar">
+                                    <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" aria-valuenow="48" aria-valuemin="0" aria-valuemax="100" style="width: 48%;">
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <!-- end progress bar -->
+            </div> {% endcomment %}
+        </div>            
+    </div>
+    <!-- end dashboard inner -->
+ 
+<!-- Modal section -->
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Titulo de la seccion</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p class="font-weight-bold">Servicio 1</p>
+            <p>Detalles del servicio</p>
+            <p>Fecha de Termino</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Administrar</button>
+        </div>
+        <div class="modal-body">
+            <p class="font-weight-bold">Servicio 2</p>
+            <p>Detalles del servicio</p>
+            <p>Fecha de Termino</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Administrar</button>
+        </div>
+        </div>
+    </div>
+    </div>
+    <!-- End Modal section -->
+    <!-- ENVIANDO CONTEXTOS-->
+
+    {% include 'modals/modal_web.html' %}
+    {% include 'modals/modal_hosting.html' %}
+    {% include 'modals/modal_inscripcion.html' %}
+    {% include 'modals/modal_marketing.html' %}
+
+{% endblock content %} 

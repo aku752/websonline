@@ -1,0 +1,59 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %} Detalle {% endblock %}
+{% block header_title %} Detalle {% endblock header_title %}
+{% block content %}
+  
+<!-- row -->
+<div class="row">
+    <div class="col-md-12"></div>
+        <div class="col-md-12">
+            <div class="white_shd full margin_bottom_30">
+                <div class="full graph_head"> 
+                    <div class="full price_table padding_infor_info">
+                        <div class="row">
+                            <!-- user profile section --> 
+                            <!-- profile image -->
+                            <div class="col-lg-12">
+                                <div class="full dis_flex center_text">                                   
+                                        
+                                            <div class="profile_contant">
+                                                <div class="contact_inner">
+                                                    <h4>{{ serv_webs.proyecto }}</h4>
+                                                    <p><strong>Nombre de Servicio:</strong> {{ serv_webs.proyecto }}</p>
+                                                
+                                                    <p><strong>Empresa:&nbsp&nbsp</strong>{{ serv_webs.servicio }}</p>
+                                                    <p><strong>Detalle:&nbsp&nbsp</strong>{{ serv_webs.detalle }}</p> 
+                                                    {% if serv_webs.estado == True %}                   
+                                                    <p class="p_status"><strong>Estado:</strong> Activo</p>
+                                                    {% else %}
+                                                    <p class="p_status"><strong>Estado:</strong> Inactivo</p>
+                                                    {% endif %}
+                                                </div>
+                                                
+                                            </div>
+                                  
+                                </div>                    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+        </div>
+    </div>    
+</div>
+
+<!-- model popup -->
+<!-- The Modal -->
+
+        <!-- Modal footer -->
+        {% comment %} <div class="modal-footer">
+
+            <!--<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>-->
+            <a class="model_bt btn btn-primary btn-xs" href="{% url 'resumen' %}">Volver</a>
+        </div> {% endcomment %}
+
+                  <!-- end model popup -->               
+
+{% endblock content %} 
+

@@ -1,0 +1,102 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %} Guias tutorial {% endblock %}
+{% block header_title %} Galeria de imagenes{% endblock header_title %}
+{% block content %}  
+  
+  <!-- dashboard inner -->
+               <div class="midde_cont">
+                  <div class="container-fluid">
+                     {% comment %} <div class="row column_title">
+                        <div class="col-md-12">
+                           <div class="page_title">
+                              <h2>Galeria de imagenes</h2>
+                           </div>
+                        </div>
+                     </div> {% endcomment %}
+                     <!-- row -->
+                     <div class="row column4 graph">
+                        <!-- Gallery section -->
+                        <div class="col-md-12">
+                           <div class="white_shd full margin_bottom_30">
+                              {% comment %} <div class="full graph_head">
+                                 <div class="heading1 margin_0">
+                                    <h2>Media Gallery Design Elements</h2>
+                                 </div>
+                              </div> {% endcomment %}
+                              <div class="full gallery_section_inner padding_infor_info">
+                                 <div class="row">
+                                    <div class="col-sm-4 col-md-3 margin_bottom_30">
+                                       <div class="column">
+                                          <a data-fancybox="gallery" href="#"><img class="img-responsive" src="{% static 'images/layout_img/g1.jpg' %}" alt="#" /></a>
+                                       </div>
+                                       <div class="heading_section">
+                                          <h4>Sed ut perspiciatis</h4>
+                                       </div>
+                                    </div>
+                                    <div class="col-sm-4 col-md-3 margin_bottom_30">
+                                       <div class="column">
+                                          <a data-fancybox="gallery" href="images/layout_img/g2.jpg"><img class="img-responsive" src="{% static 'images/layout_img/g2.jpg' %}" alt="#" /></a>
+                                       </div>
+                                       <div class="heading_section">
+                                          <h4>Sed ut perspiciatis</h4>
+                                       </div>
+                                    </div>
+                                    <div class="col-sm-4 col-md-3 margin_bottom_30">
+                                       <div class="column">
+                                          <a data-fancybox="gallery" href="images/layout_img/g3.jpg"><img class="img-responsive" src="{% static 'images/layout_img/g3.jpg' %}" alt="#" /></a>
+                                       </div>
+                                       <div class="heading_section">
+                                          <h4>Sed ut perspiciatis</h4>
+                                       </div>
+                                    </div>
+                                    <div class="col-sm-4 col-md-3 margin_bottom_30">
+                                       <div class="column">
+                                          <a data-fancybox="gallery" href="images/layout_img/g4.jpg"><img class="img-responsive" src="{% static 'images/layout_img/g4.jpg' %}" alt="#" /></a>
+                                       </div>
+                                       <div class="heading_section">
+                                          <h4>Sed ut perspiciatis</h4>
+                                       </div>
+                                    </div>                                   
+                                   
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- footer -->
+                     {% comment %} <div>
+                        <div class="row">
+                           <div>
+                             
+                           </div>
+                        </div>
+                     </div> {% endcomment %}
+                  </div>
+                  <!-- end dashboard inner -->
+            
+            <!-- model popup -->
+            <!-- The Modal -->
+            <div class="modal fade" id="gallery">
+               <div class="modal-dialog">
+                  <div class="modal-content">
+                     <!-- Modal Header -->
+                     <div class="modal-header">
+                        <h4 class="modal-title">Modal Heading</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                     </div>
+                     <!-- Modal body -->
+                     <div class="modal-body">
+                        Modal body..
+                     </div>
+                     <!-- Modal footer -->
+                     <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- end model popup -->
+     
+
+{% endblock content %} 

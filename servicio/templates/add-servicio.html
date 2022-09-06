@@ -1,0 +1,193 @@
+{% extends 'index.html'%}
+{% load static %}
+{% block title %} Agregar servicio {% endblock %}
+{% block header_title %} Agregar servicio {% endblock header_title %}
+{% block content %}
+<!-- row -->
+    <!--<div class="row">
+    
+        <div class="col-md-12">
+            <div class="white_shd full margin_bottom_30">
+                <div class="full graph_head">
+                    <div class="heading1 margin_0">
+                    <h2><i class="fa fa-plus" aria-hidden="true"></i> A&ntilde;ade el Servicio que requieras</h2>
+                    </div>
+                </div>
+                <div class="full padding_infor_info">
+                    <div class="invoice_inner">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form action="{% url 'send_mensaje' %}" role="form" method="POST" class="form-inline">
+                                {% csrf_token %}
+                                <input type="hidden" value="56" name="idcli">
+                                <div class="col-3 form-group">
+                                    <p>Seleccione Servicio:<br>
+                                    <select class="form-control" required name="Servicio">
+                                        <option value="1">Dise&ntilde;o de Sitio Web</option>
+                                        <option value="2">Hosting Profesional</option>
+                                        <option value="3">Inscripcion de Dominio</option>
+                                        <option value="4">Marketing Digital</option>
+                                        
+                                        {% comment %} {% for servicio in servicios %}
+                                            <option value="{{ forloop.counter }}">{{ servicio.nombre }}</option>                                    
+                                        {% endfor %} {% endcomment %}
+
+                                    </select></p>
+                                </div>
+                                
+                                
+                                
+                                <div class="col-6 form-group">
+                                    <p>Nombre de Dominio:
+                                    <br> 
+                                    <input type="text" class="form-control" name="dominio" placeholder="Ingrese Dominio o proyecto" required >
+                                    
+                                    </p>
+                                </div>
+                                
+                                <div class="col-12 form-group">
+                                        <button type = "submit" name = "button" class = "btn btn-info"> Solicitar Servicio</button>
+                                </div>
+                                
+                            </form>
+                            <br>
+                    
+                        <div class="col-12 alert-warning" role="alert"><br><strong>TENGA EN CUENTA</strong> 
+                            
+                                <p>
+                                Esta es una Solicitud de Activación de Servicio y se confirmará tras la revisión de uno de nuestros agentes una vez haya sido verificada la posibilidad de brindar el servicio.
+                                Agradecemos no realice ningun pago sin antes recibir la confirmación de uno de nuestros agentes.                         
+                                </p>                        
+                            <strong>GRACIAS </strong>                        
+                            <p> &nbsp </p>                   
+                        </div>
+                        </div>
+                    </div>             
+                 
+                </div>
+               
+            </div>
+               
+        </div>
+      
+    </div> -->
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="white_shd full margin_bottom_30">
+            <div class="full graph_head">
+                <div class="heading1 margin_0">
+                    <h2><i class="fa fa-plus" aria-hidden="true"></i> A&ntilde;ade el Servicio que requieras</h2>
+                </div>
+            </div>
+            <div class="full padding_infor_info">
+                <div class="invoice_inner">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form action="{% url 'send_mensaje' %}" role="form" method="POST" class="form-horizontal">
+                                {% csrf_token %}                                
+                                
+                                <div class="col-sm-9 col-md-6 form-group form-group-sm">
+                                    <p>Seleccione Servicio:<br>
+                                        <select class="form-control" required name="Servicio">
+                                            <option value="1">Dise&ntilde;o de Sitio Web</option>
+                                            <option value="2">Hosting Profesional</option>
+                                            <option value="3">Inscripcion de Dominio</option>
+                                            <option value="4">Marketing Digital</option>
+                                        </select>
+                                    </p>
+                                </div>
+                                
+                                <div class="col-sm-9 col-md-6 form-group form-group-sm">                                  
+                                    <p>Nombre de Dominio:<br> 
+                                        <input type="text" class="form-control" name="dominio" placeholder="Ingrese Dominio o proyecto" required>
+                                    </p>
+                                </div>
+                                <hr>
+                                <div class="col-12 form-group">
+                                    <button type="submit" name="button" class="btn btn-info"> Solicitar Servicio</button>
+                                </div>
+
+                                <br>                                
+                                
+                                 
+                            </form>
+                            
+                            <div class="col-sm-12 alert-warning" role="alert">
+                                <br>
+                                
+                                <strong>TENGA EN CUENTA</strong> 
+                                <br>Esta es una 
+                                <strong>Solicitud de Activaci&oacute;n de Servicio</strong> 
+                                y se confirmar&aacute; tras la revisi&oacute;n de uno de nuestros agentes una vez haya sido verificada la posibilidad de brindar el servicio. 
+                                <br> Agradecemos no realice ningun pago sin antes recibir la confirmaci&oacute;n de uno de nuestros agentes. 
+                                <br>GRACIAS
+                                <p> &nbsp </p> 
+
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <div class="row">
+        <!-- invoice section -->
+        <div class="col-md-12">
+            <div class="white_shd full margin_bottom_30">
+                <div class="full graph_head">
+                    <div class="heading1 margin_0">
+                        <h2><i class="fa fa-folder-open" aria-hidden="true"></i> Servicios Disponibles</h2>
+                    </div>
+                </div>
+                
+                <div class="col-md-12">
+                    <div class="white_shd full margin_bottom_30">
+                        <div class="full inner_elements">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="tab_style3">
+                                        <div class="tabbar padding_infor_info">
+                                            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">                                                
+                                                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Hosting</a>
+                                                
+                                                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Diseño Web</a>
+                                                <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Correo Electonico</a>
+                                                <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Extra</a>                                            
+                                        
+                                            </div> 
+                                            
+                                            <div class="tab-content" id="v-pills-tabContent">
+                                                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                                                    <p>Un hosting es un servicio de alojamiento para sitios web. En lugar de alojar personas, el hosting web aloja los contenidos de tu web y tu correo electrónico para que puedan ser visitados en todo momento desde cualquier dispositivo conectado a Internet.
+                                                    </p>
+                                                </div>
+                                                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                                                    <p>El diseño web es un área enfocada en el desarrollo de interfaces digitales, como el diseño de sitios y aplicaciones para web. Para ello, los diseñadores web crean las páginas utilizando lenguajes de marcado como HTML.
+                                                    </p>
+                                                </div>
+                                                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                                                    <p>El correo electrónico, también conocido como e-mail, es un servicio de red que permite mandar y recibir mensajes con múltiples destinatarios o receptores, situados en cualquier parte del mundo. Para usar este servicio se necesita cualquiera de los programas de correo electrónico que ofrece la red. 
+                                                    </p>
+                                                </div>
+                                                <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                                                    <p>Seguridad en su pagina
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>                    
+            </div>
+        </div>
+    </div>                     
+        <!-- row -->
+{% endblock content %}

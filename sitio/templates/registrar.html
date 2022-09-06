@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h2>Registro</h2>
+                {# formulario #}
+                <form method="POST">
+                    {% csrf_token %}
+
+                    <!--<div class="form-group">
+                        {{ forms.usuario.label_tag }}
+                        {{ forms.usuario }}
+                    </div>
+                     <div class="form-group">
+                        {{ forms.email.label_tag }}
+                        {{ forms.email }}
+                    </div>
+                    <div class="form-group">
+                        {{ forms.password.label_tag }}
+                        {{ forms.password }}
+                    </div> -->
+                    {% for form in forms %}
+                        {{ form.label_tag }}
+                        {{ form}}
+                    {% endfor %}
+                    <br>
+                    <button type="submit" class="btn btn-primary">registrar</button>
+                </form>
+
+
+            </div>
+        </div>
+
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} 
+    Websonline panel administrador
+{% endblock title %}
+
+{% block icono %}
+    <link rel="icon" href="{% static 'images/logo/logo_sable.png' %}" type="image/png" />
+{% endblock icono %}
+
+{% block foto %}
+    {% include 'modulos/foto.html' %}
+{% endblock foto %} 
+
+{% block left_menu %}
+    {% include 'modulos/left-menu.html' %}
+{% endblock left_menu %}
+
+{% block topbar %}
+   {% include 'modulos/top-bar.html' %}    
+{% endblock topbar %}

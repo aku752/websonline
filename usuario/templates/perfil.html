@@ -1,0 +1,130 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %} Mis datos {% endblock %}
+{% block header_title %} Mis datos {% endblock header_title %}
+{% block content %}
+  
+<!-- row -->
+    <div class="row column1">
+        <div class="col-md-3"></div>
+        
+        <div class="col-md-6">
+            <div class="white_shd full margin_bottom_30">
+                <div class="full graph_head">                    
+                    <div class="full price_table padding_infor_info">
+                        <div class="row">
+                            <!-- user profile section --> 
+                            <!-- profile image -->
+                            <div class="col-12">
+                                <div class="full dis_flex center_text">
+
+                                    {% for dato in datos %}
+                                        <div class="profile_img"><img width="100" class="rounded-circle" src="{{ dato.imagen.url }}" alt="#" /></div>
+
+                                        <div class="profile_contant">
+                                            <div class="contact_inner">
+                                                <h4>{{ user.first_name }} {{ user.last_name }}</h4>
+                                                <p><i class="fa fa-envelope-o">&nbsp&nbsp&nbsp </i>{{ user.email }}</p>
+                                                <p><i class="fa fa-phone">&nbsp&nbsp&nbsp </i>{{ dato.telefono }}</p>
+                                                <p><strong>Empresa:&nbsp&nbsp</strong>{{ dato.empresa }}</p>
+                                                <p><strong>Pais:&nbsp&nbsp</strong>{{ dato.pais }}</p>
+                                                <p><strong>Ciudad:&nbsp&nbsp</strong>{{ dato.ciudad }}</p>                          
+                                                <p><strong>Direccion:&nbsp&nbsp</strong>{{ dato.direccion }}</p>                          
+                                                <p><strong>Carnet de identidad:&nbsp&nbsp</strong>{{ dato.carnet_identidad }}</p>
+                                                <p><strong>NIT:&nbsp&nbsp</strong>{{ dato.nit }}</p>
+                                            
+                                                <p class="p_status">Developer</p>
+                                            </div>
+                                            <button type="button" class="model_bt btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">Editar Perfil</button> 
+                                        
+                                            {% comment %} <a class="model_bt btn btn-primary btn-xs" href="{% url 'pagos' %}"> boton</a> {% endcomment %}
+                                        </div>
+                                        </div>
+                                    {% endfor %}
+
+                                </div>
+                               
+
+                            </div>
+                        </div>
+                            <!-- end user profile section -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+    <!-- end row -->            
+         
+   
+    <!-- model popup -->
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Editar mis Datos</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form method="post" action="guardar.php">
+                    <fieldset>
+                    <div class="field">
+                        <label class="label_field">Nombre</label><br>
+                        <input type="text" name="nombre" placeholder="Mario Luis" value= "Mario Luis" />
+                    </div>
+                    <div class="field">
+                        <label class="label_field">Apellido</label><br>
+                        <input type="text" name="apellido" placeholder="Zapata Larico" value= "Zapata Larico" />
+                    </div> 
+                    <div class="field">
+                        <label class="label_field">Canet de Identidad</label><br>
+                        <input type="text" name="ci" placeholder="" value= "" />
+                    </div>   
+                    <div class="field">
+                        <label class="label_field">Empresa</label><br>
+                        <input type="text" name="empresa" placeholder="Webs Online" value= "Webs Online" />
+                    </div>
+                    <div class="field">
+                        <label class="label_field">NIT</label><br>
+                        <input type="text" name="nit" placeholder="" value= "" />
+                    </div>
+                    <div class="field">
+                        <label class="label_field">Telefono</label><br>
+                        <input type="text" name="telefono" placeholder="75261678" value= "75261678" />
+                    </div>                               <div class="field">
+                        <label class="label_field">Direccion Email</label><br>
+                        <input type="email" name="email" placeholder="marioluis7526@gmail.com" value= "marioluis7526@gmail.com" />
+                    </div>
+                    <div class="field">
+                        <label class="label_field">Pais</label><br>
+                        <input type="text" name="pais" placeholder="" value= "" />
+                    </div>
+                    <div class="field">
+                        <label class="label_field">Ciudad</label><br>
+                        <input type="text" name="ciudad" placeholder="" value= "" />
+                    </div>
+                    <div class="field">
+                        <label class="label_field">Direccion</label><br>
+                        <input type="text" name="dir" placeholder="" value= "" />
+                    </div> 
+                    <div class="field margin_0">
+                        <label class="label_field hidden">hidden label</label><br>
+                        <button class="main_bt">Actualizar Datos</button>
+                    </div>
+                </fieldset>
+                </form>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+    </div>
+                  <!-- end model popup -->               
+
+{% endblock content %}

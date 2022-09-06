@@ -1,0 +1,32 @@
+
+<li class="nav-item active">
+    <a href="{% url 'resumen' %}">
+        <i class="fa fa-dashboard yellow_color"></i>
+        <span class="active">Resumen</span>
+    </a>
+</li>
+
+<li class="nav-item active">
+    <a href="{% url 'usuario' %}">
+        <i class="fa fa-clock-o orange_color"></i>
+        <span class="active">Mis datos</span>
+    </a>
+</li>
+<li>
+    <a href="#apps" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-object-group blue2_color"></i> <span>Mis servicios</span></a>
+    <ul class="collapse list-unstyled" id="apps">
+        <li><a href="{% url 'servicio' %}">> <span>Servicios activos</span></a></li>
+        <li><a href="{% url 'add_servicio' %}">> <span>Agregar servicio</span></a></li>
+        
+    </ul>
+</li>
+<li><a href="{% url 'pagos' %}"><i class="fa fa-money blue1_color"></i> <span>Pagos</span></a></li>
+<!--<li>
+<a href="contact.html">
+<i class="fa fa-paper-plane red_color"></i> <span>Contacto</span></a>
+</li> -->
+
+<li><a href="{% url 'guia_tutorial' %}"><i class="fa fa-book"></i> <span>Guias y tutoriales</span></a></li>
+
+<li><a href="{% url 'soporte' %}"><i class="fa fa-cog yellow_color"></i> <span>Soporte tecnico</span></a></li>
+<li><a href="{% url 'logout' %}"><i class="fa fa-sign-out red_color"></i> <span>Cerrar sesion</span></a></li>

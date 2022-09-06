@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} 
+    Error 404
+{% endblock title %}
+
+{% block icono %}
+    <link rel="icon" href="{% static 'images/logo/logo_sable.png' %}" type="image/png" />
+{% endblock icono %}
+{% block todo %}   
+   <div class="inner_page error_404">
+      <div class="full_container">
+         <div class="container">
+            <div class="center verticle_center full_height">
+               <div class="error_page">
+                  <div class="center">
+                     <div class="error_icon">
+                        <img class="img-responsive" src="{% static 'images/layout_img/error.png' %}" alt="#">
+                     </div>
+                  </div>
+                  <br>
+                  <h3>PAGINA NO ENCONTRADA !</h3>
+                  <P>PARECE QUE ESTÁS TRATANDO DE ENCONTRAR CAMINO A CASA</P>
+                  <div class="center"><a class="main_bt" href="{% url 'index' %}">Ir a pagina principal</a></div>                
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+{% endblock todo %}

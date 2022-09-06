@@ -1,0 +1,62 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %} Notificasion {% endblock %}
+{% block header_title %} Notificasion {% endblock header_title %}
+{% block content %}
+  
+<!-- row -->
+    {% if not notificasiones %}
+        {% comment %} <div class="full graph_head">
+            <div class="heading1 margin_0">
+            <h2><i class="fa fa-user" aria-hidden="true"></i> No tienes notificasiones</h2>
+            </div>
+        </div> {% endcomment %}
+        <div class="container-fluid">
+                <div class="footer">                   
+                <p><strong>No tienes notificasiones</strong></p>
+            </div>
+        </div>
+
+    {% else %}
+    <div class="row column1">
+        <div class="col-md-2"></div>
+            {% for notificasion in notificasiones %}                                       
+                <div class="col-md-12">
+                    <div class="white_shd full margin_bottom_30">
+                        <div class="full graph_head"> 
+                            <div class="full price_table padding_infor_info">
+                                <div class="row">
+                                    <!-- user profile section --> 
+                                    <!-- profile image -->
+                                    <div class="col-lg-12">
+                                        <div class="full dis_flex center_text">
+                                            <div class="profile_contant">
+                                                <div class="contact_inner">
+                                                    <h4>{{ notificasion.tipo }}</h4> 
+                                                    
+
+                                                    <p class="p_status">{{ notificasion.mensaje }}</p>
+                                                    <!--<p><i class="fa fa-envelope-o">&nbsp&nbsp&nbsp </i>Diseño de Web</p>
+                                                
+                                                    <p><strong>Empresa:&nbsp&nbsp</strong>{{ serv_web.servicio }}</p>
+                                                    <p><strong>Pais:&nbsp&nbsp</strong>{{ serv_web.detalle }}</p>                    
+                                                    <p class="p_status">Developer</p>-->
+
+                                                </div>
+                                                <!--<button  type="button" class="model_bt btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">Marcar como leido</button>-->
+                                                <a class="model_bt btn btn-primary btn-xs" href="{% url 'leer_campana' notificasion.id %}">Marcar como leido</a>
+                                            </div>
+                                        </div>                    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>  
+                </div>
+            {% endfor %}     
+        </div>
+    </div> 
+    {% endif %}         
+
+{% endblock content %} 

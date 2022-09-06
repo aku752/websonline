@@ -1,0 +1,32 @@
+<!-- Viene de resumen.html-->
+<!-- Modal section Diseno de website-->
+    <div class="modal fade" id="website" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Dise&ntilde;o de WebSite</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% if serv_webs %}
+                    {% for serv_web in serv_webs %}                     
+                        <div class="modal-body">
+                            <p class="font-weight-bold">{{ forloop.counter }}. {{ serv_web.proyecto }}</p>                          
+                            <p>Inicio: {{ serv_web.inicio }}</p>
+                            <p>Finaliza: {{ serv_web.final }}</p>
+                        </div>
+                        <div class="modal-footer">
+                            <a class="model_bt btn btn-primary btn-xs" href="{% url 'detalles' serv_web.slug %}">Detalles</a>                                                       
+                        </div> 
+                        <hr>                   
+                    {% endfor %}
+                {% else %}
+                    <div class="modal-body">
+                        <p class="font-weight-bold">No adquirio este servicio</p>                     
+                    </div>
+                {% endif %}         
+            </div>            
+        </div>
+    </div>
+<!-- End Modal section -->   

@@ -1,0 +1,37 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %} Mensaje enviado {% endblock %}
+{% block header_title %} Mensaje enviado {% endblock header_title %}
+{% block content %} 
+     <!-- row -->    
+<div class="row column1">        
+    <div class="col-xl-12">            
+        <div class="full white_shd margin_bottom_30">
+            <div class="info_people">
+                {% for usuario in usuarios %}
+                    <div class="p_info_img">
+                        <img src="{{ usuario.imagen.url }}" alt="#" />
+                    </div>
+                    <div class="user_info_cont">
+                        <h4>{{ usuario.nombre }} {{ usuario.apellido }}</h4>
+                        <p><i class="fa fa-envelope-o">&nbsp&nbsp&nbsp </i>{{ usuario.correo }}</p>
+                        <p><i class="fa fa-phone">&nbsp&nbsp&nbsp </i>{{ usuario.telefono }}</p>
+                        <p><strong>Empresa:&nbsp&nbsp</strong>{{ usuario.empresa }}</p>
+                        <p><strong>Pais:&nbsp&nbsp</strong>{{ usuario.pais }}</p>
+                        <p><strong>Ciudad:&nbsp&nbsp</strong>{{ usuario.ciudad }}</p>                          
+                        <p><strong>Direccion:&nbsp&nbsp</strong>{{ usuario.direccion }}</p>                          
+                        <p><strong>Carnet de identidad:&nbsp&nbsp</strong>{{ usuario.carnet_identidad }}</p>
+                        <p><strong>NIT:&nbsp&nbsp</strong>{{ usuario.nit }}</p>
+                        MENSAJE ENVIADO CON EXITO
+                    
+                        <p class="p_status">Developer</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+    
+    <!-- end row -->        
+
+{% endblock content %} 

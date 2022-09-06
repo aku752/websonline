@@ -1,0 +1,73 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %} Servicios Activos {% endblock title %}
+{% block header_title %} Mis servicios -> Servicios Activos {% endblock header_title %}
+
+{% block content %}
+    <div class="container">
+            <div class="row well">
+                <div class="col-sm-3">
+                <img src="{% static 'images/pagina/support.png' %}" class="img-responsive" alt="Image">
+                </div>
+                <br>
+                <div class="col-sm-9 lead">
+                    <br>
+                    <h2 class="text-info">Bienvenido al centro de soporte</h2>
+                    <br>
+                    <p>Si tiene problemas con alguno de nuestros servicios nos puede enviar un nuevo ticket para revisar su caso, nosotros lo respondemos y solucionaremos su problema a la brevedad posible.<br>Si ya nos ha enviado un ticket puede consultar el estado de este mediante su <strong>Ticket ID</strong>.</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <div class="panel panel-info">
+                        <div class="panel-heading text-center"><i class="fa fa-file-text"></i>&nbsp;<strong>Nuevo Ticket</strong>
+                        </div>
+                        <div class="panel-body text-center">
+                            <img src="{% static 'images/pagina/new_ticket.png' %}" alt="">
+                            <h4>Abrir un nuevo ticket</h4>
+                            <p class="text-justify">Si tienes un problema con cualquiera de nuestros productos reportalo creando un nuevo ticket y te ayudaremos a solucionarlo. Si desea actualizar una peticion ya realizada utiliza el formulario de la derecha <em>Comprobar estado de Ticket</em>, solamente los <strong>usuarios registrados</strong> pueden abrir un nuevo ticket.</p>
+                            <p>Para abrir un nuevo <strong>ticket</strong> has click en el siguiente boton</p>
+                            <a type="button" class="btn btn-info" href="{% url 'ticket' %}">Nuevo Ticket</a>
+                        </div>
+                    </div>
+                </div>
+            <div class="container">
+            <div class="row py-5">
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <div class="panel panel-info">
+                        <div class="panel-heading text-center"><i class="fa fa-support"></i>&nbsp;<strong>Tickets Activos</strong>
+                        </div>
+                        <div class="panel-body text-left">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                    <th scope="col">Nro Ticket</th>
+                                    <th scope="col">Fecha</th>
+                                    <th scope="col">Area</th>
+                                    <th scope="col">Asunto</th>                     
+                                    <th scope="col">Detalles</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for ticket in ticket_activos %}
+                                        <tr>
+                                        <td>{{ ticket.numero_ticket }}</td>
+                                        <td>{{ ticket.fecha }}</td>
+                                        <td>{{ ticket.departamento }}</td>
+                                        <td>{{ ticket.asunto }}</td>
+                                        
+                                        <td><a type="button" class="btn btn-info" href="{% url 'detalle-soporte' %}">Verificar</a> </td>
+                                        <td></td>
+                                    {% endfor %}
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,117 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %} Pagos {% endblock %}
+{% block header_title %} Pagos {% endblock header_title %}
+{% block content %} 
+     
+    <div class="midde_cont">
+        <div class="container-fluid">
+            {% comment %} <div class="row column_title">
+                <div class="col-md-12">
+                    <div class="page_title">
+                        <h2>Notas de Venta Activas</h2>
+                    </div>
+                </div>
+            </div> {% endcomment %}
+            <!-- row -->
+            <div class="row">
+                <!-- invoice section -->
+                <div class="col-md-12">
+                <div class="white_shd full margin_bottom_30">
+                    <div class="full padding_infor_info">
+                        <div class="heading1 margin_0">
+                            <h2><i class="fa fa-file-text-o"></i> Listado de Servicios</h2>
+                        </div>
+                        <div class="table_row">
+                            <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Nro</th>
+                                        <th>Servicio</th>
+                                        <th>Fecha Renovacion</th>
+                                        <th>Fecha Termino</th>
+                                        <th>Monto</th>
+                                        <th>Estado</th>
+                                        <th>Nro. Factura</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for deuda in deudas %}
+                                        <tr>
+                                            <td>{{ forloop.counter }}</td>
+                                            <td>{{ deuda.servicio }}</td>
+                                            <td>{{ deuda.inicio }}</td>
+                                            <td>15/10/2022</td>
+                                            <td>{{ deuda.pago }} Bs.</td>
+                                            <td>{{ deuda.situacion }}</td>
+                                            <td>{{ deuda.nro_factura }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    
+                                                                        
+                                </tbody>
+                            </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-6">
+                <div class="full white_shd">
+                    <div class="full graph_head">
+                        <div class="heading1 margin_0">
+                            <h2>Metodos de Pago</h2>
+                        </div>
+                    </div>
+                    <div class="full padding_infor_info">
+                        <ul class="payment_option">
+                            <li><img src="{% static 'images/layout_img/visa.png' %}" alt="Visa" /></li>
+                            <li><img src="{% static 'images/layout_img/mastercard.png' %}" alt="Master Card" /></li>
+                            <li><img src="{% static 'images/layout_img/american-express.png' %}" alt="Depopsito o Transferencia" /></li>
+                            <li><img src="{% static 'images/layout_img/paypal.png' %}" alt="PayPal" /></li>
+                        </ul>
+                        <p class="note_cont">Puede realizar el pago del servicio a traves del siguiente enlace.<br><a href="#">https://websonline.online/pagos.</a></p>
+                    </div>
+                </div>
+                </div>
+                <div class="col-md-6">
+                <div class="full white_shd">
+                    <div class="full graph_head">
+                        <div class="heading1 margin_0">
+                            <h2>Total a Pagar</h2>
+                        </div>
+                    </div>
+                    <div class="full padding_infor_info">
+                        <div class="price_table">
+                            <div class="table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th style="width:50%">Subtotal:</th>
+                                        <td>{{ resultados }} Bs.</td>
+                                    </tr>
+                                    <tr>
+                                        <th>IVA (13%)</th>
+                                        <td>{{ ivas }} Bs. </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Total: </th>
+                                        <td>{{ totales }} Bs.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>            
+    </div>   
+        
+
+{% endblock content %} 

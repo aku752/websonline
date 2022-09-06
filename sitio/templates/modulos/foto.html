@@ -1,0 +1,55 @@
+<!-- MODULO FOTOS COLOCAR VARIABLE 'DATO' A  LAS VISTAS-->
+{% load static %}
+{% if datos %}
+    {% for dato in datos %}   
+        <div class="sidebar_blog_1">
+            <div class="sidebar-header">
+                <div class="logo_section">
+                
+                    {% comment %} <a href="{% url 'resumen' %}"><img class="logo_icon img-responsive" src="{{ dato.imagen.url }}" alt="#" /></a> {% endcomment %}
+                    <a href="{% url 'resumen' %}"><img class="logo_icon img-responsive" src="{{ dato.imagen.url  }}" alt="#" /></a>
+                
+                </div>
+            </div>
+            
+            <div class="sidebar_user_info">
+                <div class="icon_setting"></div>
+                <div class="user_profle_side">
+                <div class="user_img">
+                
+                        <img class="img-responsive" src="{{ dato.imagen.url }}" alt="#" /></div>
+                        <div class="user_info">
+                            <h6>{{ user.first_name }}</h6>
+                            <p><span class="online_animation"></span> En Linea</p>
+                        </div>
+        
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+{% else %}
+    <div class="sidebar_blog_1">
+        <div class="sidebar-header">
+            <div class="logo_section">
+            
+                <a href="{% url 'resumen' %}"><img class="logo_icon img-responsive" src="{% static 'images/layout_img/user-0.jpg' %}" alt="#" /></a>
+            
+            </div>
+        </div>
+        
+        <div class="sidebar_user_info">
+            <div class="icon_setting"></div>
+            <div class="user_profle_side">
+                <div class="user_img">                
+                        <img class="img-responsive" src="{% static 'images/layout_img/user-0.jpg' %}" alt="#" />
+                </div>
+                <div class="user_info">
+                    <h6>Cuenta: {{ user.username }}</h6>
+                    <p><span class="online_animation"></span> Online</p>
+                </div>
+            </div>
+        </div>
+    </div>   
+
+{% endif %}

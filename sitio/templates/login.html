@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} 
+    Websonline panel administrador
+{% endblock title %}
+
+{% block icono %}
+    <link rel="icon" href="{% static 'images/logo/logo_sable.png' %}" type="image/png" />
+{% endblock icono %}
+{% block todo %}   
+   <div class="inner_page login">
+      <div class="full_container">
+         <div class="container">
+            
+            {% include 'modulos/mensaje.html'%}
+            
+            <div class="center verticle_center full_height">
+               <div class="login_section">
+                  <div class="logo_login">
+                     <div class="center">
+                        <img width="210" src="{% static 'images/logo/logo.png' %}" alt="#" />
+                     </div>
+                  </div>
+                  <div class="login_form">
+                     <form method='POST'>
+                        {% csrf_token %}
+                        <fieldset>
+                           <div class="field">
+                              <label class="label_field">Usuario</label>
+                              <input type="text" name="usuario" placeholder="Usuario" />
+                           </div>
+
+                           {% comment %} <div class="field">
+                              <label class="label_field">Email Address</label>
+                              <input type="email" name="email" placeholder="E-mail" />
+                           </div> {% endcomment %}
+
+                           <div class="field">
+                              <label class="label_field">Password</label>
+                              <input type="password" name="password" placeholder="Password" />
+                              <label class="label_field hidden">hidden label</label>
+                           </div>
+                           
+                           <div class="field">
+                              
+                              {% comment %} <label class="form-check-label"><input type="checkbox" class="form-check-input"> Recordarme</label> {% endcomment %}
+                              
+                              <a class="forgot" href="#">Olvidaste tu password?</a>
+                           </div>
+                           <div class="field margin_0">
+                              <label class="label_field hidden">hidden label</label>
+                              <button class="main_bt">Entrar</button>
+                           </div>
+                        </fieldset>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+{% endblock todo %}

@@ -1,0 +1,32 @@
+<!-- Modal  marketing resumen.html -->
+ 
+    <div class="modal fade" id="marketing" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Nombre de Dominios</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% if serv_marketings %}
+                    {% for serv_marketing in serv_marketings %}                     
+                        <div class="modal-body">
+                            <p class="font-weight-bold">{{ forloop.counter }}. {{ serv_marketing.proyecto }}</p>                          
+                            <p>Inicio: {{ serv_marketing.inicio }}</p>
+                            <p>Finaliza: {{ serv_marketing.final }}</p>
+                        </div>
+                        <div class="modal-footer">
+                            <a class="model_bt btn btn-primary btn-xs" href="{% url 'detalles' serv_marketing.slug %}">Detalles</a>                          
+                        </div> 
+                        <hr>                   
+                    {% endfor %}
+                {% else %}
+                    <div class="modal-body">
+                        <p class="font-weight-bold">No adquirio este servicio</p>                     
+                    </div>
+                {% endif %}         
+            </div>            
+        </div>
+    </div>
+<!-- End Modal section -->
