@@ -12,20 +12,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 # CONTEXT PROCESSOR
 
 # llamamos al usuario con request
-# @login_required(login_url='login')
-# def usuario(request):         
-#     return render(request, 'perfil.html', {})
+@login_required(login_url='login')
+def usuario(request):         
+    return render(request, 'perfil.html', {})
     
-#@login_required(login_url='login')
-
-
-class UsuarioList(LoginRequiredMixin,ListView):
-    model = Datos
-    login_url = 'login'
-    template_name = 'perfil.html'    
-   # redirect_field_name = 'resumen'
-    #form_class = UsuarioForm
-    #success_url = reverse_lazy('resumen')
 
 class UsuarioUpdate(LoginRequiredMixin,UpdateView):
     model = Datos
