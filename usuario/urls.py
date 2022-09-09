@@ -6,7 +6,7 @@ from .views import (soporte, pagos, resumen, detalles, campana,
 from django.views.generic import TemplateView
 urlpatterns = [
     # path('', usuario, name='usuario'),
-    path('usuario-lista/', UsuarioList.as_view(), name='usuario_list'),
+    path('usuario-lista/', UsuarioList.as_view(), name='usuario-list'),
     path('editar-datos/<int:pk>', UsuarioUpdate.as_view(), name='usuario_actualizar'),
     path('detalle-soporte/', DetalleSoporteView.as_view(), name='detalle-soporte'),
     path('pagos/', pagos, name='pagos'),

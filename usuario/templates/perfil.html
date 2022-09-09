@@ -19,7 +19,31 @@
                             <div class="col-12">
                                 <div class="full dis_flex center_text">
 
-                                    {% for dato in datos %}
+                                    {% comment %} {% for dato in datos %}
+                                        <div class="profile_img"><img width="100" class="rounded-circle" src="{{ dato.imagen.url }}" alt="#" /></div>
+                                        
+                                        <div class="profile_contant">                                            
+                                            <div class="contact_inner">
+                                                <h4>{{ user.first_name }} {{ user.last_name }}</h4>
+                                                <p><i class="fa fa-envelope-o">&nbsp&nbsp&nbsp </i>{{ user.email }}</p>
+                                                <p><i class="fa fa-phone">&nbsp&nbsp&nbsp </i>{{ dato.telefono }}</p>
+                                                <p><strong>Empresa:&nbsp&nbsp</strong>{{ dato.empresa }}</p>
+                                                <p><strong>Pais:&nbsp&nbsp</strong>{{ dato.pais }}</p>
+                                                <p><strong>Ciudad:&nbsp&nbsp</strong>{{ dato.ciudad }}</p>                          
+                                                <p><strong>Direccion:&nbsp&nbsp</strong>{{ dato.direccion }}</p>                          
+                                                <p><strong>Carnet de identidad:&nbsp&nbsp</strong>{{ dato.carnet_identidad }}</p>
+                                                <p><strong>NIT:&nbsp&nbsp</strong>{{ dato.nit }}</p>
+                                            
+                                                <p class="p_status">Developer</p>
+                                            </div>
+                                            <button type="button" class="model_bt btn btn-primary btn-xs" data-toggle="modal" data-target="#editardatos">Editar Perfil</button> 
+                                        
+                                            <a class="model_bt btn btn-primary btn-xs" href="{% url 'pagos' %}"> boton</a> 
+                                        </div>
+                                        </div>
+                                    {% endfor %}  {% endcomment %}
+                                     
+                                    {% for dato in object_list %} 
                                         <div class="profile_img"><img width="100" class="rounded-circle" src="{{ dato.imagen.url }}" alt="#" /></div>
                                         
                                         <div class="profile_contant">                                            
@@ -41,7 +65,7 @@
                                             {% comment %} <a class="model_bt btn btn-primary btn-xs" href="{% url 'pagos' %}"> boton</a> {% endcomment %}
                                         </div>
                                         </div>
-                                    {% endfor %}
+                                     {% endfor %} 
                                     
 
                                 </div>

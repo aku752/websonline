@@ -191,4 +191,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 JAZZMIN_SETTINGS = JAZZMIN_SETTINGS
-
+CRYSPY_TEMPLATE_PACK = 'bootstrap4'

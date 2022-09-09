@@ -31,7 +31,7 @@ class UsuarioUpdate(LoginRequiredMixin,UpdateView):
     model = Datos
     template_name = 'modals/modal-editar-datos.html'
     form_class = UsuarioForm
-    success_url = reverse_lazy('resumen')
+   # success_url = reverse_lazy('usuario:resumen')    
 
 @login_required(login_url='login')
 def pagos(request):    

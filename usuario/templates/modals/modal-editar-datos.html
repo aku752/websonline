@@ -10,14 +10,14 @@
             </div>
             <!-- Modal body -->
             <div class="modal-body">
-                <form method="POST">
+                <form method="POST" action="">
                     {% csrf_token %}
                     
                     <fieldset>     
                         {% comment %} {{ form.as_p }}                   {% endcomment %}
-                        {{ form | crispy }}
-
-                    {% comment %} <div class="field">
+                       
+                    {% comment %} {{ form|crispy }} {% endcomment %}
+                    <div class="field">
                         <label class="label_field">Nombre</label><br>
                         <input type="text" name="nombre" placeholder="Mario Luis" value= "Mario Luis" />
                     </div>
@@ -55,7 +55,7 @@
                     <div class="field">
                         <label class="label_field">Direccion</label><br>
                         <input type="text" name="dir" placeholder="" value= "" />
-                    </div> {% endcomment %}
+                    </div> 
                     <div class="field margin_0">
                         {% comment %} <a class="model_bt btn btn-primary btn-xs" href="{% url 'usuario_actualizar' object.id %}">Actualizar</a> {% endcomment %}
                         <button class="main_bt">Actualizar Datos</button>
