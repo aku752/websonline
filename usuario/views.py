@@ -6,7 +6,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.views.generic import TemplateView, ListView, CreateView, DeleteView, UpdateView
 from django.template import loader, RequestContext
-from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 # PARA FUNCIONES Funcion autenticar
 # CONTEXT PROCESSOR
@@ -14,14 +13,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 # llamamos al usuario con request
 @login_required(login_url='login')
 def usuario(request):         
-    return render(request, 'perfil.html', {})
-    
+    return render(request, 'perfil.html', {})   
 
-class UsuarioUpdate(LoginRequiredMixin,UpdateView):
-    model = Datos
-    template_name = 'modals/modal-editar-datos.html'
-    form_class = UsuarioForm
-    success_url = reverse_lazy('resumen')
 
 @login_required(login_url='login')
 def pagos(request):    
@@ -57,8 +50,7 @@ def soporte(request):
 def detalles(request, slug):
     usuario = request.user
     servicio = ServicioActivo.objects.filter(usuario=User.objects.get(username=usuario)) 
-    serv_web = servicio.get(slug=slug)
-    
+    serv_web = servicio.get(slug=slug)    
     return render(request, 'detalle.html', {'serv_webs':serv_web})
 
 @login_required(login_url='login')
