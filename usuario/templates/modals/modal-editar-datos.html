@@ -1,0 +1,73 @@
+{% load crispy_forms_tags %}
+    <!-- The Modal -->
+    <div class="modal fade" id="editardatos">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Editar mis datos</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form method="POST">
+                    {% csrf_token %}
+                    
+                    <fieldset>     
+                        {% comment %} {{ form.as_p }}                   {% endcomment %}
+                        {{ form | crispy }}
+
+                    {% comment %} <div class="field">
+                        <label class="label_field">Nombre</label><br>
+                        <input type="text" name="nombre" placeholder="Mario Luis" value= "Mario Luis" />
+                    </div>
+                    <div class="field">
+                        <label class="label_field">Apellido</label><br>
+                        <input type="text" name="apellido" placeholder="Zapata Larico" value= "Zapata Larico" />
+                    </div> 
+                    <div class="field">
+                        <label class="label_field">Canet de Identidad</label><br>
+                        <input type="text" name="ci" placeholder="" value= "" />
+                    </div>   
+                    <div class="field">
+                        <label class="label_field">Empresa</label><br>
+                        <input type="text" name="empresa" placeholder="Webs Online" value= "Webs Online" />
+                    </div>
+                    <div class="field">
+                        <label class="label_field">NIT</label><br>
+                        <input type="text" name="nit" placeholder="" value= "" />
+                    </div>
+                    <div class="field">
+                        <label class="label_field">Telefono</label><br>
+                        <input type="text" name="telefono" placeholder="75261678" value= "75261678" />
+                    </div>                               <div class="field">
+                        <label class="label_field">Direccion Email</label><br>
+                        <input type="email" name="email" placeholder="marioluis7526@gmail.com" value= "marioluis7526@gmail.com" />
+                    </div>
+                    <div class="field">
+                        <label class="label_field">Pais</label><br>
+                        <input type="text" name="pais" placeholder="" value= "" />
+                    </div>
+                    <div class="field">
+                        <label class="label_field">Ciudad</label><br>
+                        <input type="text" name="ciudad" placeholder="" value= "" />
+                    </div>
+                    <div class="field">
+                        <label class="label_field">Direccion</label><br>
+                        <input type="text" name="dir" placeholder="" value= "" />
+                    </div> {% endcomment %}
+                    <div class="field margin_0">
+                        {% comment %} <a class="model_bt btn btn-primary btn-xs" href="{% url 'usuario_actualizar' object.id %}">Actualizar</a> {% endcomment %}
+                        <button class="main_bt">Actualizar Datos</button>
+                    </div> 
+                </fieldset>
+                </form>
+            </div>
+            <!-- Modal footer -->
+            {% comment %} <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                
+            </div> {% endcomment %}
+        </div>
+    </div>
+    </div>

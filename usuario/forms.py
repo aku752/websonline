@@ -1,5 +1,7 @@
 from django import forms 
-from .models import Usuario
+from .models import Datos
 
 class UsuarioForm(forms.ModelForm):
-    pass
+    class Meta:
+        model = Datos
+        fields = '__all__'

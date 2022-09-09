@@ -15,7 +15,6 @@ def index(request):
     
     return render(request, 'resumen.html',{}) 
 
-
 def login_view(request):
     if request.method == 'POST':  
         usuario = request.POST.get('usuario')

@@ -14,6 +14,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 from .jazzmin import JAZZMIN_SETTINGS
 import os
+
 #from django.conf.global_settings import LANGUAGES as DJANGO_LANGUAGES
 #from django.utils.translation import gettext_lazy as _
 #from decouple import config
@@ -50,8 +51,11 @@ INSTALLED_APPS = [
     'sitio',
     'servicio',
     'usuario',
+    'crispy_forms',
     
 ]
+#CRISPY_TEMPLATE_PACK = 'uni_form'
+#CRISPY_TEMPLATE_PACK = 'boostrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -187,3 +191,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 JAZZMIN_SETTINGS = JAZZMIN_SETTINGS
+

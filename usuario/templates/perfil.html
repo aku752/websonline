@@ -1,5 +1,6 @@
 {% extends 'index.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 {% block title %} Mis datos {% endblock %}
 {% block header_title %} Mis datos {% endblock header_title %}
 {% block content %}
@@ -20,8 +21,8 @@
 
                                     {% for dato in datos %}
                                         <div class="profile_img"><img width="100" class="rounded-circle" src="{{ dato.imagen.url }}" alt="#" /></div>
-
-                                        <div class="profile_contant">
+                                        
+                                        <div class="profile_contant">                                            
                                             <div class="contact_inner">
                                                 <h4>{{ user.first_name }} {{ user.last_name }}</h4>
                                                 <p><i class="fa fa-envelope-o">&nbsp&nbsp&nbsp </i>{{ user.email }}</p>
@@ -35,12 +36,13 @@
                                             
                                                 <p class="p_status">Developer</p>
                                             </div>
-                                            <button type="button" class="model_bt btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">Editar Perfil</button> 
+                                            <button type="button" class="model_bt btn btn-primary btn-xs" data-toggle="modal" data-target="#editardatos">Editar Perfil</button> 
                                         
                                             {% comment %} <a class="model_bt btn btn-primary btn-xs" href="{% url 'pagos' %}"> boton</a> {% endcomment %}
                                         </div>
                                         </div>
                                     {% endfor %}
+                                    
 
                                 </div>
                                
@@ -59,72 +61,7 @@
          
    
     <!-- model popup -->
-    <!-- The Modal -->
-    <div class="modal fade" id="myModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title">Editar mis Datos</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <!-- Modal body -->
-            <div class="modal-body">
-                <form method="post" action="guardar.php">
-                    <fieldset>
-                    <div class="field">
-                        <label class="label_field">Nombre</label><br>
-                        <input type="text" name="nombre" placeholder="Mario Luis" value= "Mario Luis" />
-                    </div>
-                    <div class="field">
-                        <label class="label_field">Apellido</label><br>
-                        <input type="text" name="apellido" placeholder="Zapata Larico" value= "Zapata Larico" />
-                    </div> 
-                    <div class="field">
-                        <label class="label_field">Canet de Identidad</label><br>
-                        <input type="text" name="ci" placeholder="" value= "" />
-                    </div>   
-                    <div class="field">
-                        <label class="label_field">Empresa</label><br>
-                        <input type="text" name="empresa" placeholder="Webs Online" value= "Webs Online" />
-                    </div>
-                    <div class="field">
-                        <label class="label_field">NIT</label><br>
-                        <input type="text" name="nit" placeholder="" value= "" />
-                    </div>
-                    <div class="field">
-                        <label class="label_field">Telefono</label><br>
-                        <input type="text" name="telefono" placeholder="75261678" value= "75261678" />
-                    </div>                               <div class="field">
-                        <label class="label_field">Direccion Email</label><br>
-                        <input type="email" name="email" placeholder="marioluis7526@gmail.com" value= "marioluis7526@gmail.com" />
-                    </div>
-                    <div class="field">
-                        <label class="label_field">Pais</label><br>
-                        <input type="text" name="pais" placeholder="" value= "" />
-                    </div>
-                    <div class="field">
-                        <label class="label_field">Ciudad</label><br>
-                        <input type="text" name="ciudad" placeholder="" value= "" />
-                    </div>
-                    <div class="field">
-                        <label class="label_field">Direccion</label><br>
-                        <input type="text" name="dir" placeholder="" value= "" />
-                    </div> 
-                    <div class="field margin_0">
-                        <label class="label_field hidden">hidden label</label><br>
-                        <button class="main_bt">Actualizar Datos</button>
-                    </div>
-                </fieldset>
-                </form>
-            </div>
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-            </div>
-        </div>
-    </div>
-    </div>
+    {% include 'modals/modal-editar-datos.html' %}
                   <!-- end model popup -->               
 
 {% endblock content %}

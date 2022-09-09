@@ -1,19 +1,37 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
+from .forms import UsuarioForm
 from .models import ServicioActivo, Datos, Notificasion, Pagos, Ticket
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, CreateView, DeleteView, UpdateView
 from django.template import loader, RequestContext
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 # PARA FUNCIONES Funcion autenticar
 # CONTEXT PROCESSOR
 
 # llamamos al usuario con request
-@login_required(login_url='login')
-def usuario(request): 
-        
-    return render(request, 'perfil.html', {})
+# @login_required(login_url='login')
+# def usuario(request):         
+#     return render(request, 'perfil.html', {})
+    
+#@login_required(login_url='login')
+
+
+class UsuarioList(LoginRequiredMixin,ListView):
+    model = Datos
+    login_url = 'login'
+    template_name = 'perfil.html'    
+   # redirect_field_name = 'resumen'
+    #form_class = UsuarioForm
+    #success_url = reverse_lazy('resumen')
+
+class UsuarioUpdate(LoginRequiredMixin,UpdateView):
+    model = Datos
+    template_name = 'modals/modal-editar-datos.html'
+    form_class = UsuarioForm
+    success_url = reverse_lazy('resumen')
 
 @login_required(login_url='login')
 def pagos(request):    
@@ -95,8 +113,7 @@ def leer_campana(request,id):
     return render(request, 'notificasiones/campana.html', {})
 
 @login_required(login_url='login')
-def ticket(request):  
-
+def ticket(request):
     return render(request, 'crear-ticket.html',{})
 
 
@@ -123,6 +140,13 @@ def guia_tutorial(request):
 
 class DetalleSoporteView(TemplateView):
     template_name='detalle-soporte.html'
+
+# class UsuarioUpdate(UpdateView):
+#     model = Datos
+#     template_name = 'perfil.html'
+#     form_class = UsuarioForm
+#     success_url = reverse_lazy('resumen')
+    
 
 
 
