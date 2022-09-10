@@ -16,12 +16,14 @@ def usuario(request):
     return render(request, 'perfil.html', {})   
 
 def crear_usuario(request):
+    # enviar datos
     if request.method=='POST':
         usuario_form= UsuarioForm(request.POST)
         if usuario_form.is_valid():
             usuario_form.save()
             return redirect('resumen')
     else:
+        # Si no hay formulario pintarme los campos
         usuario_form = UsuarioForm()
     return render(request,'crear-usuario.html', {'usuario_form':usuario_form})
 
@@ -36,6 +38,9 @@ def editar_usuario(request,id):
         return redirect('index')
 
     return render(request,'modal/modal-editar-datos.html',{'usuario_form':usuario_form})
+
+def actualizar_usuario(request):
+    pass
 
 @login_required(login_url='login')
 def pagos(request):    
@@ -131,10 +136,6 @@ def crear_ticket(request):
     ticket_activo = activos.filter(estado=True) 
 
     return render(request, 'soporte.html', {'ticket_activos':ticket_activo})
-
-
-def editar_datos(request, id):
-    pass
 
 
 def guia_tutorial(request):  

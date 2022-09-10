@@ -1,13 +1,12 @@
 {% extends 'index.html' %}
+{% load crispy_forms_tags %}
 {% load static %}
 {% block title %} Crear usuario {% endblock %}
 {% block header_title %} Crear usuario {% endblock header_title %}
 {% block content %}
 <form method='POST'>
-    {{ usuario_form.as_p }}
-
+    {% csrf_token %}
+    {{ usuario_form|crispy }}
+    <button type='submit'>enviar</button>
 </form>
-            
-
-
 {% endblock content %}
