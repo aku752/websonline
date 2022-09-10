@@ -1,0 +1,13 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %} Crear usuario {% endblock %}
+{% block header_title %} Crear usuario {% endblock header_title %}
+{% block content %}
+<form method='POST'>
+    {{ usuario_form.as_p }}
+
+</form>
+            
+
+
+{% endblock content %}

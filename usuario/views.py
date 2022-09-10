@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from .forms import UsuarioForm
 from .models import ServicioActivo, Datos, Notificasion, Pagos, Ticket
@@ -15,6 +15,27 @@ from django.template import loader, RequestContext
 def usuario(request):         
     return render(request, 'perfil.html', {})   
 
+def crear_usuario(request):
+    if request.method=='POST':
+        usuario_form= UsuarioForm(request.POST)
+        if usuario_form.is_valid():
+            usuario_form.save()
+            return redirect('resumen')
+    else:
+        usuario_form = UsuarioForm()
+    return render(request,'crear-usuario.html', {'usuario_form':usuario_form})
+
+def editar_usuario(request,id):
+    usuario = Datos.objects.get(id=id)
+    if request.method == 'GET':
+        usuario_form=UsuarioForm(instance=usuario)
+    else:
+        usuario_form=UsuarioForm(request.POST,instance=usuario)
+        if usuario_form.is_valid():
+            usuario_form.save()
+        return redirect('index')
+
+    return render(request,'modal/modal-editar-datos.html',{'usuario_form':usuario_form})
 
 @login_required(login_url='login')
 def pagos(request):    

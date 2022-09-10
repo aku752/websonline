@@ -1,11 +1,13 @@
 from django.urls import path
 from .views import (soporte, pagos, resumen, detalles, campana,
                     leer_campana, ticket, crear_ticket,guia_tutorial, DetalleSoporteView,
-                    usuario)
+                    usuario, editar_usuario, crear_usuario)
 # siempre poner la barra / al final de la url y el name es al html
 from django.views.generic import TemplateView
 urlpatterns = [
     path('', usuario, name='usuario'), 
+    path('crear-usuario/', crear_usuario, name='crear-usuario'), 
+    path('editar-usuario/<int:id>',editar_usuario, name='editar-usuario'),
     path('detalle-soporte/', DetalleSoporteView.as_view(), name='detalle-soporte'),
     path('pagos/', pagos, name='pagos'),
     path('soporte/', soporte, name='soporte'),
