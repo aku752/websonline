@@ -550,16 +550,12 @@
            
          </div>
       {% endblock todo %}
-      <!-- jQuery -->
-      {% block extra %}
-      
-      {% endblock extra %}
-      <script src="{% static 'js/jquery.min.js' %}"></script>      
-      <!-- jQuery nuevo-->
-      <script src="{% static 'js/jquery-3.6.1.js' %}"></script>
+      <!-- jQuery -->     
 
-      <script src="{% static 'js/popper.min.js' %}"></script>
+      {% comment %} <script src="{% static 'js/jquery.min.js' %}"></script>       {% endcomment %}
+      <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>      
       <script src="{% static 'js/bootstrap.min.js' %}"></script>
+      {% comment %} <script src="{% static 'js/popper.min.js' %}"></script> {% endcomment %}
       <!-- wow animation -->
       <script src="{% static 'js/animate.js' %}"></script>
       <!-- select country -->
@@ -577,9 +573,19 @@
          var ps = new PerfectScrollbar('#sidebar');
       </script>
       <!-- custom js -->
-      <script src="{% static 'js/custom.js' %}"></script>
-      <script src="{% static 'js/chart_custom_style1.js' %}"></script>   
-      
-      
+      {% comment %} <script src="{% static 'js/custom.js' %}"></script> {% endcomment %}
+      {% comment %} <script src="{% static 'js/calendar.min.js' %}"></script> {% endcomment %}
+      {% comment %} <script src="{% static 'js/chart_custom_style1.js' %}"></script>    {% endcomment %}
+      {% comment %} <script type="text/javascript">
+        var $ = jQuery.noConflict();
+        function abrir_modal_editar(url){
+            $('#editardatos').load(url, function (){
+                $(this).modal('show');
+            });
+        }
+      </script>  {% endcomment %}
+      <script src="https://unpkg.com/htmx.org@1.8.0"></script>
+      {% block extrajs %}
+      {% endblock extrajs %}
    </body>
 </html>
