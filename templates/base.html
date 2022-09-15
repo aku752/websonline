@@ -19,7 +19,6 @@
       <link href="https://fonts.googleapis.com/css?family=Montserrat:300,700" rel="stylesheet">
       {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'css/styles-login.css' %}"> {% endcomment %}
 
-      
       {# Final del login #}
       <!-- site icon -->
       {% block icono %}
@@ -552,7 +551,13 @@
          </div>
       {% endblock todo %}
       <!-- jQuery -->
-      <script src="{% static 'js/jquery.min.js' %}"></script>
+      {% block extra %}
+      
+      {% endblock extra %}
+      <script src="{% static 'js/jquery.min.js' %}"></script>      
+      <!-- jQuery nuevo-->
+      <script src="{% static 'js/jquery-3.6.1.js' %}"></script>
+
       <script src="{% static 'js/popper.min.js' %}"></script>
       <script src="{% static 'js/bootstrap.min.js' %}"></script>
       <!-- wow animation -->
@@ -573,6 +578,8 @@
       </script>
       <!-- custom js -->
       <script src="{% static 'js/custom.js' %}"></script>
-      <script src="{% static 'js/chart_custom_style1.js' %}"></script>
+      <script src="{% static 'js/chart_custom_style1.js' %}"></script>   
+      
+      
    </body>
 </html>

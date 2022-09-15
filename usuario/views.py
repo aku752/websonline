@@ -12,9 +12,12 @@ from django.template import loader, RequestContext
 
 # llamamos al usuario con request
 @login_required(login_url='login')
-def usuario(request):         
-    return render(request, 'perfil.html', {})   
+def usuario(request):     
+    usuario_form = UsuarioForm()
+    return render(request, 'perfil.html', {'usuario_form':usuario_form})   
 
+
+@login_required(login_url='login')
 def crear_usuario(request):
     # enviar datos
     if request.method=='POST':
@@ -27,6 +30,8 @@ def crear_usuario(request):
         usuario_form = UsuarioForm()
     return render(request,'crear-usuario.html', {'usuario_form':usuario_form})
 
+
+@login_required(login_url='login')
 def editar_usuario(request,id):
     usuario = Datos.objects.get(id=id)
     if request.method == 'GET':
@@ -36,11 +41,9 @@ def editar_usuario(request,id):
         if usuario_form.is_valid():
             usuario_form.save()
         return redirect('index')
+    
+    return render(request, 'modals/modal-editar-datos.html', {'usuario_form': usuario_form})
 
-    return render(request,'modal/modal-editar-datos.html',{'usuario_form':usuario_form})
-
-def actualizar_usuario(request):
-    pass
 
 @login_required(login_url='login')
 def pagos(request):    
@@ -67,8 +70,7 @@ def soporte(request):
     activos = Ticket.objects.filter(usuario=User.objects.get(username=usuario))
     ticket_activo = activos.filter(estado=True)
 
-    return render(request, 'soporte.html', {'ticket_activos': ticket_activo})
-    
+    return render(request, 'soporte.html', {'ticket_activos': ticket_activo})    
   
 
 
@@ -138,6 +140,7 @@ def crear_ticket(request):
     return render(request, 'soporte.html', {'ticket_activos':ticket_activo})
 
 
+@login_required(login_url='login')
 def guia_tutorial(request):  
 
     return render(request, 'guia-tutorial.html', {})

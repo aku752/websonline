@@ -7,7 +7,7 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path('', usuario, name='usuario'), 
     path('crear-usuario/', crear_usuario, name='crear-usuario'), 
-    path('editar-usuario/<int:id>',editar_usuario, name='editar-usuario'),
+    path('editar-usuario/<int:id>',editar_usuario, name='editar_usuario'),
     path('detalle-soporte/', DetalleSoporteView.as_view(), name='detalle-soporte'),
     path('pagos/', pagos, name='pagos'),
     path('soporte/', soporte, name='soporte'),
