@@ -40,7 +40,7 @@ def editar_usuario(request,id):
         usuario_form=UsuarioForm(request.POST,instance=usuario)
         if usuario_form.is_valid():
             usuario_form.save()
-        return redirect('index')
+        return redirect('usuarios')
     
     return render(request, 'modals/modal-editar-datos.html', {'usuario_form': usuario_form})
 

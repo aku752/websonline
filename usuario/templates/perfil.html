@@ -37,14 +37,12 @@
                                                 <p class="p_status">Developer</p>
                                             </div>
                                             <!--<button type="button" class="model_bt btn btn-primary btn-xs" data-toggle="modal" data-target="#editardatos">Editar Perfil</button>-->
-                                            <button onclick="abrir_modal_editar('{% url 'editar_usuario' dato.id %}')" data-toggle="modal" class="model_bt btn btn-primary btn-xs" data-target="#editardatos">Editar Perfil con boton</button> 
+                                            <button onclick="abrir_modal_editar('{% url 'editar_usuario' dato.id %}')" data-toggle="modal" class="model_bt btn btn-primary btn-xs" data-target="#editardatos">Editar Perfil</button> 
                                             <!-- Trigger the modal with a button -->
                                             {% comment %} <button type="button" class="btn btn-success openBtn">Open Modal</button> {% endcomment %}
-                                            <a class="model_bt btn btn-primary btn-xs" href="{% url 'editar_usuario' dato.id %}" role="button" data-toggle="modal" data-target="#editardatos">  con a class</a>
+                                            {% comment %} <a class="model_bt btn btn-primary btn-xs" href="{% url 'editar_usuario' dato.id %}" role="button" data-toggle="modal" data-target="#editardatos">  con a class</a> {% endcomment %}
                                             <!-- have a button POST a click via AJAX -->
-                                            <button hx-post="/clicked" hx-swap="outerHTML">
-                                                Click Me
-                                            </button>
+                                          
                                        
                                         </div>
                                         </div>
@@ -70,11 +68,8 @@
     {% comment %} {% include 'modals/modal-editar-datos.html' %} {% endcomment %}
     <!-- The Modal -->
    
-    <div class="modal fade" id="editardatos">
-        aqui datos
-    <div class="modal-dialog">
+    <div class="modal fade" id="editardatos">      
         
-    </div>
     </div>
 
 
@@ -87,7 +82,7 @@
     
 {% endblock content %}
 {% block extrajs %}
-<script type="text/javascript">
+    <script type="text/javascript">
         var $ = jQuery.noConflict();
         function abrir_modal_editar(url){
             $('#editardatos').load(url, function (){

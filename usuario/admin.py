@@ -32,11 +32,11 @@ class RespuestaAdmin(admin.ModelAdmin):
     list_display=('numero_ticket','respuesta','estado')
     list_editable=('estado',)
 
-class QuestionAdmin(admin.ModelAdmin):
-    list_display = ('pub_date',)
+# class QuestionAdmin(admin.ModelAdmin):
+#     list_display = ('pub_date',)
     
-class ChoiceAdmin(admin.ModelAdmin):
-    list_display = ('question','choice_text')
+# class ChoiceAdmin(admin.ModelAdmin):
+#     list_display = ('question','choice_text')
 
 
 admin.site.register(ServicioActivo, ServicioActivoAdmin)
@@ -45,8 +45,8 @@ admin.site.register(Datos, DatosAdmin)
 admin.site.register(Pagos, PagosAdmin)
 admin.site.register(Ticket, TicketAdmin)
 admin.site.register(Respuesta, RespuestaAdmin)
-admin.site.register(Question, QuestionAdmin)
-admin.site.register(Choice, ChoiceAdmin)
+# admin.site.register(Question, QuestionAdmin)
+# admin.site.register(Choice, ChoiceAdmin)
 
 # admin.site.site_header = 'Websonline'
 # admin.site.index_title = 'Panel de control Websonline'
