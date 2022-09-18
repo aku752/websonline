@@ -34,13 +34,13 @@ def crear_usuario(request):
 @login_required(login_url='login')
 def editar_usuario(request,id):
     usuario = Datos.objects.get(id=id)
-    if request.method == 'GET':
-        usuario_form=UsuarioForm(instance=usuario)
-    else:
+    if request.method == 'GET':    
+        usuario_form=UsuarioForm(instance=usuario)       
+    else:     
         usuario_form=UsuarioForm(request.POST,instance=usuario)
         if usuario_form.is_valid():
             usuario_form.save()
-        return redirect('usuarios')
+        return redirect('index')
     
     return render(request, 'modals/modal-editar-datos.html', {'usuario_form': usuario_form})
 

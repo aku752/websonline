@@ -10,15 +10,15 @@
             </div>
             <!-- Modal body -->            
             <div class="modal-body">
-                <form method="POST">
+                <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %}                  
-                    <fieldset>     
+                     
                       {{ usuario_form|crispy }}                 
                     <div class="field margin_0">
                         {% comment %} <a class="model_bt btn btn-primary btn-xs" href="{% url 'usuario_actualizar' object.id %}">Actualizar</a> {% endcomment %}
-                        <button class="main_bt">Actualizar Datos</button>
+                        <button class="main_bt" type="submit">Actualizar Datos</button>
                     </div> 
-                    </fieldset>
+                  
                 </form>
             </div>
             <!-- Modal footer -->
