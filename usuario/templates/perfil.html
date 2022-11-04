@@ -37,10 +37,10 @@
                                                 <p class="p_status">Developer</p>
                                             </div>
                                             <!--<button type="button" class="model_bt btn btn-primary btn-xs" data-toggle="modal" data-target="#editardatos">Editar Perfil</button>-->
-                                            <button formenctype="multipart/form-data" onclick="abrir_modal_editar('{% url 'editar_usuario' dato.id %}')" data-toggle="modal" class="model_bt btn btn-primary btn-xs" data-target="#editardatos">Editar Perfil</button> 
+                                            {% comment %} <button formenctype="multipart/form-data" onclick="abrir_modal_editar('{% url 'editar_usuario' dato.id %}')" data-toggle="modal" class="model_bt btn btn-primary btn-xs" data-target="#editardatos">Editar Perfil</button>  {% endcomment %}
                                             <!-- Trigger the modal with a button -->
                                             {% comment %} <button type="button" class="btn btn-success openBtn">Open Modal</button> {% endcomment %}
-                                            {% comment %} <a class="model_bt btn btn-primary btn-xs" href="{% url 'editar_usuario' dato.id %}" role="button" data-toggle="modal" data-target="#editardatos">  con a class</a> {% endcomment %}
+                                            <a class="model_bt btn btn-primary btn-xs" href="{% url 'editar_usuario' dato.id %}">Editar</a>
                                             <!-- have a button POST a click via AJAX -->
                                           
                                        
@@ -81,7 +81,7 @@
 
     
 {% endblock content %}
-{% block extrajs %}
+{% comment %} {% block extrajs %}
     <script>
         var $ = jQuery.noConflict();
         function abrir_modal_editar(url){
@@ -89,8 +89,8 @@
                 $(this).modal('show');
             });
         }
-    </script> 
-{% endblock extrajs %}
+    </script>  
+{% endblock extrajs %} {% endcomment %}
 
 
 

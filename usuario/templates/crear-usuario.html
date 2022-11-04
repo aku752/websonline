@@ -4,9 +4,9 @@
 {% block title %} Crear usuario {% endblock %}
 {% block header_title %} Crear usuario {% endblock header_title %}
 {% block content %}
-<form method='POST'>
-    {% csrf_token %}
-    {{ usuario_form|crispy }}
-    <button type='submit'>enviar</button>
-</form>
+    <form method="POST" enctype=multipart/form-data>
+        {% csrf_token %}
+        {{ usuario_form | crispy }}
+        <button type="submit" class="model_bt btn btn-primary btn-xs">enviar</button>
+    </form>
 {% endblock content %}

@@ -27,7 +27,9 @@
 </li> -->
 
 <li><a href="{% url 'guia_tutorial' %}"><i class="fa fa-book"></i> <span>Guias y tutoriales</span></a></li>
-<li><a href="{% url 'crear-usuario' %}"><i class="fa fa-book"></i> <span>CREAR USUARIO</span></a></li>
+<li><a href="{% url 'crear_usuario' %}"><i class="fa fa-book"></i> <span>CREAR USUARIO</span></a></li>
+<li><a href="{% url 'listar_usuario' %}"><i class="fa fa-book"></i> <span>LISTAR USUARIO</span></a></li>
+{% comment %} <li><a href="{% url 'editar_usuario' dato.id %}"><i class="fa fa-book"></i> <span>EDITARUSUARIO</span></a></li> {% endcomment %}
 
 <li><a href="{% url 'soporte' %}"><i class="fa fa-cog yellow_color"></i> <span>Soporte tecnico</span></a></li>
 <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out red_color"></i> <span>Cerrar sesion</span></a></li>

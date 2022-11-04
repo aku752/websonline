@@ -16,6 +16,9 @@ def usuario(request):
     usuario_form = UsuarioForm()
     return render(request, 'perfil.html', {'usuario_form':usuario_form})   
 
+@login_required(login_url='login')
+def listar_usuario(request):
+    return render(request,'listar_usuario.html',{})
 
 @login_required(login_url='login')
 def crear_usuario(request):
@@ -33,16 +36,22 @@ def crear_usuario(request):
 
 @login_required(login_url='login')
 def editar_usuario(request,id):
-    usuario = Datos.objects.get(id=id)
-    if request.method == 'GET':    
-        usuario_form=UsuarioForm(instance=usuario)       
-    else:     
-        usuario_form=UsuarioForm(request.POST,instance=usuario)
-        if usuario_form.is_valid():
-            usuario_form.save()
-        return redirect('index')
     
-    return render(request, 'modals/modal-editar-datos.html', {'usuario_form': usuario_form})
+    usuario = Datos.objects.get(id=id)
+    if request.method == "POST":
+        print("este es un metodo POST")
+    if request.method == "GET":
+        print("este es un metodo GET")
+        usuario_form=UsuarioForm(instance=usuario)       
+    else:   
+        print("este es un metodo POST QUE INGRESO")
+        usuario_form=UsuarioForm(request.POST, instance=usuario)   
+        if usuario_form.is_valid():
+            print("USUARIO_FORM:",usuario_form)
+            usuario_form.save()
+        return redirect('listar_usuario')
+    
+    return render(request, 'editar_usuario.html', {'usuario_form': usuario_form})
 
 
 @login_required(login_url='login')
