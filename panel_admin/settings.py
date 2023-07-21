@@ -13,8 +13,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 #import django_heroku
 from pathlib import Path
 from .jazzmin import JAZZMIN_SETTINGS
+from decouple import config
 import os
-
 #from django.conf.global_settings import LANGUAGES as DJANGO_LANGUAGES
 #from django.utils.translation import gettext_lazy as _
 #from decouple import config
@@ -28,16 +28,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 #SECRET_KEY = 'django-insecure-3bkjqogkktk+zk@-)7(#(tm_utz7f*dkw5g3z5&n!hz8n_w6@j'
-SECRET_KEY = 'django-insecure-3bkjqogkktk+zk@-)7(#(tm_utz7f*dkw5g3z5&n!hz8n_w6@j'
+
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = config('DEBUG')
 
-
-# EN ALWAYDATA
-DEBUG = True
-ALLOWED_HOSTS = ['localhost','*']
-
-# Application definition
+ALLOWED_HOSTS = ['aku752.pythonanywhere.com','*']
 
 INSTALLED_APPS = [   
     'whitenoise.runserver_nostatic',
@@ -99,16 +98,29 @@ WSGI_APPLICATION = 'panel_admin.wsgi.application'
 
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'panel_admin',
+#         'USER': 'root',
+#         'PASSWORD': '',
+#         'HOST': 'localhost',
+#         'PORT': '3306',
+#         'OPTIONS': {
+#             'sql_mode': 'traditional',
+#         }
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'panel_admin',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'ENGINE': config('ENGINE'),
+        'NAME': config('NAME'),
+        'USER': config('USER'),
+        'PASSWORD': config('PASSWORD'),
+        'HOST': config('HOST'),
         'OPTIONS': {
-            'sql_mode': 'traditional',
+            'sql_mode': config('SQLMODE'),
         }
     }
 }
@@ -170,32 +182,20 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-
 MEDIA_URL = 'media/'
-
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)    
-
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+    
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-
-
 # Default primary key field type
-# https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-#LOGIN_REDIRECT_URL = "/"
-# LOGIN_REDIRECT_URL = reverse_lazy('sitio_app:index')
-#STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
-
-JAZZMIN_SETTINGS = JAZZMIN_SETTINGS
-
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'marioluis7526@gmail.com'
-EMAIL_HOST_PASSWORD = '75261678python'
-EMAIL_USE_TLS = True
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+EMAIL_BACKEND = config('EMAIL_BACKEND')
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = config('EMAIL_USE_TLS')
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
