@@ -19,11 +19,11 @@
                             <div class="col-12">
                                 <div class="full dis_flex center_text">
  
-                                    <form method='POST'>
+                                    <form method="POST" enctype=multipart/form-data>
                                         {% csrf_token %}
-                                        {{ usuario_form|crispy }}
-                                        <button type='submit'>enviar</button>
-                                    </form>                                  
+                                        {{ usuario_form | crispy }}
+                                        <button type="submit" class="model_bt btn btn-primary btn-xs">enviar</button>
+                                    </form>                                 
 
                                 </div>                              
 

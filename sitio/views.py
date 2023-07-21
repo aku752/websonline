@@ -7,13 +7,15 @@ from django.views.generic import TemplateView
 
 # Create your views here.   
 # Solamente lo principal no hay vistas generales
-                            
+
+
+
 def index(request):   
     if not request.user.is_authenticated:        
         return redirect('login')
     #CONTEXT PROCESSOR 
-    
-    return render(request, 'resumen.html',{}) 
+    return redirect('resumen')
+    #return render(request, 'resumen.html',{}) 
 
 def login_view(request):
     if request.method == 'POST':  
@@ -59,7 +61,6 @@ class Error500View(TemplateView):
             r.render()
             return r
         return view
-
 
 
 

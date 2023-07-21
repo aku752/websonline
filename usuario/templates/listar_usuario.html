@@ -1,38 +1,96 @@
 {% extends 'index.html' %}
-{% load crispy_forms_tags %}
 {% load static %}
-{% block title %} Crear usuario {% endblock %}
-{% block header_title %} Crear usuario {% endblock header_title %}
+{% load crispy_forms_tags %}
+{% block title %} Mis datos {% endblock %}
+{% block header_title %} Mis datos {% endblock header_title %}
 {% block content %}
-
-    {% for dato in datos %}
-
-        <div class="profile_img"><img width="100" class="rounded-circle" src="{{ dato.imagen.url }}" alt="#" /></div>
-
-        <div class="profile_contant">                                            
-            <div class="contact_inner">
-                <h4>{{ user.first_name }} {{ user.last_name }}</h4>
-                <p><i class="fa fa-envelope-o">&nbsp&nbsp&nbsp </i>{{ user.email }}</p>
-                <p><i class="fa fa-phone">&nbsp&nbsp&nbsp </i>{{ dato.telefono }}</p>
-                <p><strong>Empresa:&nbsp&nbsp</strong>{{ dato.empresa }}</p>
-                <p><strong>Pais:&nbsp&nbsp</strong>{{ dato.pais }}</p>
-                <p><strong>Ciudad:&nbsp&nbsp</strong>{{ dato.ciudad }}</p>                          
-                <p><strong>Direccion:&nbsp&nbsp</strong>{{ dato.direccion }}</p>                          
-                <p><strong>Carnet de identidad:&nbsp&nbsp</strong>{{ dato.carnet_identidad }}</p>
-                <p><strong>NIT:&nbsp&nbsp</strong>{{ dato.nit }}</p>
-            
-                <p class="p_status">Developer</p>
-            </div>
-            <!--<button type="button" class="model_bt btn btn-primary btn-xs" data-toggle="modal" data-target="#editardatos">Editar Perfil</button>-->
-            {% comment %} <button formenctype="multipart/form-data" onclick="abrir_modal_editar('{% url 'editar_usuario' dato.id %}')" data-toggle="modal" class="model_bt btn btn-primary btn-xs" data-target="#editardatos">Editar Perfil</button>  {% endcomment %}
-            <!-- Trigger the modal with a button -->
-            {% comment %} <button type="button" class="btn btn-success openBtn">Open Modal</button> {% endcomment %}
-            <a class="model_bt btn btn-primary btn-xs" href="{% url 'editar_usuario' dato.id %}"> Editar</a>
-            <!-- have a button POST a click via AJAX -->
+  
+<!-- row -->
+    <div class="row column1">
+        <div class="col-md-3"></div>
         
+        <div class="col-md-6">
+            <div class="white_shd full margin_bottom_30">
+                <div class="full graph_head">                    
+                    <div class="full price_table padding_infor_info">
+                        <div class="row">
+                            <!-- user profile section --> 
+                            <!-- profile image -->
+                            <div class="col-12">
+                                <div class="full dis_flex center_text">
 
-        </div>
-        </div>
-    {% endfor %} 
+                                    {% for dato in datos %}
+                                        <div class="profile_img"><img width="100" class="rounded-circle" src="{{ dato.imagen.url }}" alt="#" /></div>
+                                
+                                        <div class="profile_contant">                                            
+                                            <div class="contact_inner">
+                                                <h4>{{ user.first_name }} {{ user.last_name }}</h4>
+                                                <p><i class="fa fa-envelope-o">&nbsp&nbsp&nbsp </i>{{ user.email }}</p>
+                                                <p><i class="fa fa-phone">&nbsp&nbsp&nbsp </i>{{ dato.telefono }}</p>
+                                                <p><strong>Empresa:&nbsp&nbsp</strong>{{ dato.empresa }}</p>
+                                                <p><strong>Pais:&nbsp&nbsp</strong>{{ dato.pais }}</p>
+                                                <p><strong>Ciudad:&nbsp&nbsp</strong>{{ dato.ciudad }}</p>                          
+                                                <p><strong>Direccion:&nbsp&nbsp</strong>{{ dato.direccion }}</p>                          
+                                                <p><strong>Carnet de identidad:&nbsp&nbsp</strong>{{ dato.carnet_identidad }}</p>
+                                                <p><strong>NIT:&nbsp&nbsp</strong>{{ dato.nit }}</p>
+                                            
+                                                <p class="p_status">Developer</p>
+                                            </div>
+                                            <!--<button type="button" class="model_bt btn btn-primary btn-xs" data-toggle="modal" data-target="#editardatos">Editar Perfil</button>-->
+                                            {% comment %} <button formenctype="multipart/form-data" onclick="abrir_modal_editar('{% url 'editar_usuario' dato.id %}')" data-toggle="modal" class="model_bt btn btn-primary btn-xs" data-target="#editardatos">Editar Perfil</button>  {% endcomment %}
+                                            <!-- Trigger the modal with a button -->
+                                            {% comment %} <button type="button" class="btn btn-success openBtn">Open Modal</button> {% endcomment %}
+                                            <a class="model_bt btn btn-primary btn-xs" href="{% url 'editar_usuario' dato.id %}">Editar</a>
+                                            <!-- have a button POST a click via AJAX -->
+                                          
+                                       
+                                        </div>
+                                        </div>
+                                    {% endfor %} 
+                                </div>                               
 
+                            </div>
+                        </div>
+                            <!-- end user profile section -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+    <!-- end row -->   
+    <!-- Modal -->
+    
+         
+   
+    <!-- model popup -->
+    {% comment %} {% include 'modals/modal-editar-datos.html' %} {% endcomment %}
+    <!-- The Modal -->
+   
+    <div class="modal fade" id="editardatos">      
+        
+    </div>
+
+
+                  <!-- end model popup --> 
+                  
+         
+                  
+    
+
+    
 {% endblock content %}
+{% comment %} {% block extrajs %}
+    <script>
+        var $ = jQuery.noConflict();
+        function abrir_modal_editar(url){
+            $('#editardatos').load(url, function (){
+                $(this).modal('show');
+            });
+        }
+    </script>  
+{% endblock extrajs %} {% endcomment %}
+
+
+

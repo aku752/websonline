@@ -6,6 +6,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.views.generic import TemplateView, ListView, CreateView, DeleteView, UpdateView
 from django.template import loader, RequestContext
+#Para enviar formulario
+from django.template.loader import get_template
+from django.core.mail import EmailMultiAlternatives
+from django.conf import settings
+
 # Create your views here.
 # PARA FUNCIONES Funcion autenticar
 # CONTEXT PROCESSOR
@@ -38,8 +43,7 @@ def crear_usuario(request):
 def editar_usuario(request,id):
     
     usuario = Datos.objects.get(id=id)
-    if request.method == "POST":
-        print("este es un metodo POST")
+    
     if request.method == "GET":
         print("este es un metodo GET")
         usuario_form=UsuarioForm(instance=usuario)       
@@ -49,7 +53,7 @@ def editar_usuario(request,id):
         if usuario_form.is_valid():
             print("USUARIO_FORM:",usuario_form)
             usuario_form.save()
-        return redirect('listar_usuario')
+            return redirect('listar_usuario')
     
     return render(request, 'editar_usuario.html', {'usuario_form': usuario_form})
 
@@ -162,7 +166,51 @@ class DetalleSoporteView(TemplateView):
 #     template_name = 'perfil.html'
 #     form_class = UsuarioForm
 #     success_url = reverse_lazy('resumen')
-    
+
+
+def enviar_email(nombre, apellido, direccion, correo, telefono, pedido):
+    context = {'nombre': nombre,
+               'apellido': apellido,
+               'direccion': direccion,
+               'correo': correo,
+               'telefono': telefono,
+               'pedido': pedido,
+               }
+    template = get_template('correo.html')
+    content = template.render(context)
+    enviar = EmailMultiAlternatives(
+        'Correo de contacto',
+        'Panificadora',
+        settings.EMAIL_HOST_USER,
+        [nombre, apellido, direccion, correo, telefono, pedido]
+    )
+    enviar.attach_alternative(content, 'text/html')
+    enviar.send()
+
+def formulario(request):
+    # enviar datos
+    if request.method == 'POST':
+        usuario_form = UsuarioForm(request.POST)
+        if usuario_form.is_valid():
+            enviar_email(usuario_form)
+            usuario_form.save()
+            return redirect('resumen')
+    else:
+        # Si no hay formulario pintarme los campos
+        usuario_form = UsuarioForm()
+    return render(request, 'formulario.html', {'usuario_form': usuario_form})
+
+    # return render(request, 'formulario.html', {})
 
 
 
+# def contactenos(request):
+#     if request.method == "POST":
+#         nombre = request.POST.get('nombre')
+#         apellido = request.POST.get('apellido')
+#         direccion = request.POST.get('direccion')
+#         correo = request.POST.get('correo')
+#         telefono = request.POST.get('telefono')
+#         pedido = request.POST.get('pedido')
+#         enviar_email(nombre, apellido, direccion, correo, telefono, pedido)
+#     return render(request, 'contactenos.html')

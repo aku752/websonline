@@ -4,10 +4,7 @@ from django.template.defaultfilters import slugify
 import random
 from django.utils.translation import gettext_lazy as _
 
-
-
 # Create your models here.
-
 
 class Datos(models.Model):
     usuario = models.OneToOneField(User, on_delete=models.CASCADE)   
@@ -21,6 +18,9 @@ class Datos(models.Model):
     estado = models.BooleanField(default=True)
     imagen = models.ImageField(upload_to='perfil', null=True, blank=True)
 
+    class Meta:
+        verbose_name_plural = 'Datos'
+        
     def __str__(self):
         return "{}".format(self.usuario)    
 
@@ -41,7 +41,10 @@ class ServicioActivo(models.Model):
     progreso = models.CharField(max_length=200)
     detalle = models.TextField(max_length=2000)
     slug= models.SlugField(null=False,blank=False,unique=True)
-    estado = models.BooleanField(default=True)    
+    estado = models.BooleanField(default=True) 
+
+    class Meta:
+        verbose_name_plural = 'Servicios Activos'
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.proyecto) + slugify(self.inicio)
@@ -62,8 +65,12 @@ class Notificasion(models.Model):
     mensaje = models.TextField(max_length=200)
     estado = models.BooleanField(default=True)
     
+    class Meta:
+        verbose_name_plural = 'Notificasiones'
+
     def __str__(self):
         return "{}".format(self.tipo)
+    
 ESTADO_PAGO=(
     ('Impago','Impago'),
     ('Pago','Pago'),
@@ -77,6 +84,9 @@ class Pagos(models.Model):
     nro_factura= models.CharField(max_length=100)
     estado = models.BooleanField(default=True)
 
+    class Meta:
+        verbose_name_plural = 'Pagos'
+       
     def __str__(self):
         return "{}".format(self.usuario)
 

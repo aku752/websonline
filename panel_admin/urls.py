@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-# from sitio import views
+# from sitio import views estamos trayecdo las vista de sitio
 from sitio.views import Error404View, Error500View,login_view,logout_view,index
 from django.conf.urls import handler404, handler500
 from django.conf.urls.i18n import i18n_patterns
@@ -25,7 +25,7 @@ from django.conf.urls.i18n import i18n_patterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index, name='index'),
+    path('', index, name='index'),   
     path('cuentas/login/', login_view, name='login'),
     path('cuentas/logout/', logout_view, name='logout'), 
     path('usuarios/', include(('usuario.urls'))),
